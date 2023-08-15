@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2023_08_14_213320) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "comment"
-    t.integer "customer_id"
-    t.integer "recipe_id"
+    t.integer "customer_id", null: false
+    t.integer "recipe_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 2023_08_14_213320) do
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.boolean "is_withdrawal", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -60,16 +65,17 @@ ActiveRecord::Schema.define(version: 2023_08_14_213320) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "name"
-    t.text "material"
-    t.text "making"
-    t.text "message"
+    t.integer "customer_id", null: false
+    t.string "name", null: false
+    t.text "material", null: false
+    t.text "making", null: false
+    t.text "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_tags_on_name", unique: true

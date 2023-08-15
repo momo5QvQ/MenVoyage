@@ -1,2 +1,38 @@
-<h1>Public::Recipes#new</h1>
-<p>Find me in app/views/public/recipes/new.html.erb</p>
+<div class="container-fluid">
+  <h2>レシピ投稿</h2>
+
+  <%= form_with model: @recipe, url: public_recipes_path do |f| %>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>レシピ名</p>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>材料</p>
+      <%= f.text_area :material %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>作り方</p>
+      <%= f.text_area :making %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>メッセージ</p>
+      <%= f.text_area :message %>
+    </div>
+  </div>
+
+  <%= f.submit "投稿" %>
+
+  <% end %>
+
+</div>
