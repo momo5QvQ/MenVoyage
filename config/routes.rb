@@ -64,11 +64,6 @@ Rails.application.routes.draw do
     #resources :sessions, only: [:new, :create, :destroy]
      #顧客のログイン・新規登録・ログアウト
 
-    #get 'sessions/new'
-    #get 'sessions/create'
-    #get 'sessions/destroy'
-    #get 'registrations/new'
-    #get 'registrations/create'
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

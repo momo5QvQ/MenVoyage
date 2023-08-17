@@ -12,6 +12,13 @@
 
   <div class="row">
     <div class="col-md-12 mb-3">
+      <p>画像</p>
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
       <p>材料</p>
       <%= f.text_area :material %>
     </div>
@@ -30,6 +37,14 @@
       <%= f.text_area :message %>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>タグ</p>
+      <%= f.text_field :tag_list, placeholder: "複数の場合は,で区切って入力してください" %>
+    </div>
+  </div>
+
 
   <%= f.submit "投稿" %>
 
