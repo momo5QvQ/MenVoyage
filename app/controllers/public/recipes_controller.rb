@@ -37,7 +37,7 @@ class Public::RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    @tag_list = Tag.all
+    @tags = Tag.all
   end
 
   def edit

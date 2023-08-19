@@ -4,13 +4,15 @@
       <h3>レシピ一覧</h3>
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col-md-12">
-      <% @tag_list.each do |list|%>
-      <i class="fa-sharp fa-solid fa-tag"></i>
-      <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-        <%="(#{list.recipes.count})" %>
+
+  <%= render 'public/searches/search' %>
+
+  <div class="row"><!--タグ一覧-->
+    <div class="col-md-12 mb-3">
+      <% @tags.each do |tag| %>
+        <i class="fa-sharp fa-solid fa-tag"></i>
+        <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
+        (<%= tag.recipe_tags.count %>)
       <% end %>
     </div>
   </div>
