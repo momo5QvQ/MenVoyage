@@ -1,2 +1,37 @@
-<h1>Public::Recipes#index</h1>
-<p>Find me in app/views/public/recipes/index.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mb-5">
+      <h3>レシピ一覧</h3>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <% @tag_list.each do |list|%>
+      <i class="fa-sharp fa-solid fa-tag"></i>
+      <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+        <%="(#{list.recipes.count})" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <% @recipes.each do |recipe| %>
+          <div class="col-md-3 col-sm-6 mb-3">
+            <div class="mb-2">
+              <%= link_to recipe_path(recipe.id) do %>
+                <%= image_tag recipe.get_image, size: "200x150", style: "object-fit: cover;" %>
+              <% end %>
+            </div>
+            <div class="mb-3">
+              <%= recipe.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

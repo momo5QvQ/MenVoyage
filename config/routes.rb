@@ -26,9 +26,10 @@ Rails.application.routes.draw do
     #get 'sessions/destroy'
   end
 
-  namespace :public do
+  scope module: :public do
 
     root to: 'homes#top'
+
     get "/homes/about" => "homes#about", as: "about"
 
     resources :recipes, only: [:new, :create, :show, :index, :edit, :update]
@@ -46,7 +47,7 @@ Rails.application.routes.draw do
     get 'customers/mypage' => 'customers#show'
     # 顧客のマイページ
 
-    get 'customers//information/edit' => 'customers#edit'
+    get 'customers/information/edit' => 'customers#edit'
     # 顧客の会員登録情報編集
 
     patch 'customers/information/update' => 'customers#update'
@@ -57,6 +58,11 @@ Rails.application.routes.draw do
 
     get 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
     # 顧客の退会処理(ステータスの更新) patchではない？
+
+    get "search_tag" => "recipes#search_tag"
+    # タグの検索で使用する
+    
+    get "search" => "searches#search"
 
     #resources :customers, only: [:show, :edit, :update, :check, :withdrawal]
      #顧客情報の詳細・編集・退会の確認画面・退会

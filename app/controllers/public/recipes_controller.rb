@@ -23,7 +23,16 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     # タグ
     @tags = @recipe.tags.pluck(:name).join(',')
+    @recipe_tags = @recipe.tags
+  end
 
+  def search_tag
+    #検索結果画面でもタグ一覧表示
+    @tags = Tag.all
+    　#検索されたタグを受け取る
+    @tag = Tag.find(params[:tag_id])
+    　#検索されたタグに紐づく投稿を表示
+    @recipe = @tag.recipes
   end
 
   def index
