@@ -9,3 +9,10 @@
 #if Rails.env.development?
   Admin.create!(email: "admin@test.com", password: "password")
 #end
+# Tag.create([
+#   { name: 'うどん' },
+#   { name: 'マカロニ・スパゲティ' },
+#   { name: '中華麺' },
+#   { name: 'そうめん' },
+#   { name: 'そば' }
+# ])

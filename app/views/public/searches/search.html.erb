@@ -1,0 +1,23 @@
+<h2>検索結果</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがRecipeの時 -->
+  <% if @range == "Recipe" %>
+    <tbody>
+      <% @recipes.each do |recipe| %>
+        <tr>
+          <td><%= recipe.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td><%= tag.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
