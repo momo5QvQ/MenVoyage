@@ -4,6 +4,8 @@ class Recipe < ApplicationRecord
   belongs_to :customer
   has_many :recipe_tags, dependent: :destroy
   has_many :tags, through: :recipe_tags
+  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
 
   def get_image #画像がない時の処理
     unless image.attached?
@@ -47,6 +49,12 @@ class Recipe < ApplicationRecord
     else
       @recipe = Recipe.all
     end
+  end
+
+  # 現在サインインしているユーザーがお気に入り登録しているかどうか判断するためのメソッドです。
+  # find_byでcustomer_idとcustomer.idが一致するbookmarksを探し、なければnilを返します。
+  def find_bookmark(customer)
+      bookmarks.find_by(customer_id: customer.id)
   end
 
 end

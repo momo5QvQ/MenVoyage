@@ -1,12 +1,69 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
+      <% if admin_signed_in? %>
+        <%= link_to "麺Voyage", admin_root_path, class:"header-title navbar-brand" %>
+      <% else %>
+        <%= link_to "麺Voyage", root_path, class:"header-title navbar-brand" %>
+      <% end %>
       <button class="navbar-toggler mx-5" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          <% if customer_signed_in? %>
+            <li class="nav-item active">
+              <span class="nav-link text-dark">ようこそ<%= current_customer.last_name %>さん</span>
+            </li>
+            <li class="nav-item">
+              <%= link_to "マイページ", customers_mypage_path(current_customer), class: "btn btn-outline-secondary mx-3 my-1"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to "レシピ一覧", recipes_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+            <!--<li class="nav-item">-->
+            <!--  <%#= link_to "ブックマーク", cart_items_path, class: "btn btn-outline-secondary mx-3 my-1" %>-->
+            <!--</li>-->
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <% elsif admin_signed_in? %>
+          <!--adminログイン時に表示されるheader-->
+            <li class="nav-item">
+              <%= link_to "レシピ一覧", admin_recipes_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+            <!--<li class="nav-item">-->
+            <!--  <%#= link_to "注文履歴一覧", admin_root_path, class: "btn btn-outline-secondary mx-3 my-1" %>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--  <%#= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary mx-3 my-1" %>-->
+            <!--</li>-->
+            <li class="nav-item">
+              <%= link_to "ログアウト",  destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+          <% else %>
+            <!--ログインしていない時に表示されるheader-->
+            <li class="nav-item">
+              <%= link_to "about", about_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "レシピ一覧", recipes_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+          <% end %>
+          <%# if admin_signed_in? %>
+            <%#= render "layouts/search" %>
+          <%# end %>
         </ul>
       </div>
     </div>
