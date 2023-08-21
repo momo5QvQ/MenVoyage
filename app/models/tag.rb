@@ -1,5 +1,6 @@
 class Tag < ApplicationRecord
   has_many :recipe_tags, dependent: :destroy
+  has_many :recipes, through: :recipe_tags
 
   # 検索方法分岐
   def self.looks(search, word)

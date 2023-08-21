@@ -12,7 +12,7 @@ class Public::RecipesController < ApplicationController
     if @recipe.save
       #@recipeをつけることpostモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
       @recipe.save_tags(tags)
-      redirect_to public_recipe_path(@recipe), notice:'投稿が完了しました'
+      redirect_to recipe_path(@recipe), notice:'投稿が完了しました'
     else
       render :new
     end
@@ -29,10 +29,11 @@ class Public::RecipesController < ApplicationController
   def search_tag
     #検索結果画面でもタグ一覧表示
     @tags = Tag.all
-    　#検索されたタグを受け取る
+    #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
-    　#検索されたタグに紐づく投稿を表示
+    #検索されたタグに紐づく投稿を表示
     @recipe = @tag.recipes
+
   end
 
   def index
