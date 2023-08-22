@@ -1,9 +1,9 @@
 <% if current_customer != @recipe.customer %>
   <div class="bookmark">
     <% if @recipe.find_bookmark(current_customer).blank? %>
-      <%= link_to "お気に入りに登録", recipe_bookmarks_path(@recipe), method: :post, class: "btn btn-success btn-lg" %>
+      <%= link_to "ブックマークに登録", recipe_bookmarks_path(@recipe), method: :post, class: "btn btn-success btn-lg" %>
     <% else %>
-      <%= link_to "お気に入りを解除", recipe_bookmark_path(@recipe,@recipe.find_bookmark(current_customer)), method: :delete, class: "btn btn-outline-success btn-lg" %>
+      <%= link_to "ブックマークを解除", recipe_bookmark_path(@recipe,@recipe.find_bookmark(current_customer)), method: :delete, class: "btn btn-outline-success btn-lg" %>
     <% end %>
   </div>
 <% end %>

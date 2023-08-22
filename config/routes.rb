@@ -37,11 +37,11 @@ Rails.application.routes.draw do
 
       resources :bookmarks, only: [:create, :destroy]
        #ブックマークの追加・削除
+       
+      resources :comments, only: [:create, :destroy]
+      #コメントの追加・削除
 
     end
-
-    resources :comments, only: [:create, :destroy]
-     #コメントの追加・削除
 
     resources :tags, only: [:create, :edit, :update, :destroy]
      #タグの作成・編集・更新・削除
