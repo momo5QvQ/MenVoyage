@@ -37,9 +37,7 @@
         </div>
       </div>
     </div>
-    <% if @book.user == current_user %>
-      <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
-    <% end %>
+
     <%= render "bookmark", bookmark: @bookmark %>
   </div>
 </div>

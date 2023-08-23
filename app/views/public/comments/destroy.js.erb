@@ -1,0 +1,3 @@
+$("#comments-area").html("<%= j(render 'book_comments/comment', recipe: @recipe, comment: @comment) %>")
+
+$("#comments-count").html("<%= j(render 'book_comments/comment', recipe: @recipe) %>")

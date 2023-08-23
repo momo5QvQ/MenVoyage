@@ -63,20 +63,6 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <div>
-      <p>コメント件数：<%= @recipe.comments.count %></p>
-      <% @recipe.comments.each do |comment| %>
-        <%= comment.customer.name %>
-        <%= comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-      <% end %>
-    </div>
-    <div>
-      <%= form_with model: [@recipe, @comment] do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
-      <% end %>
-    </div>
-  </div>
+  <%= render partial: "comment", locals: { recipe: @recipe, comment: @comment} %>
 
 </div>
