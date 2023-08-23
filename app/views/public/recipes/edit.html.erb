@@ -1,2 +1,53 @@
-<h1>Public::Recipes#edit</h1>
-<p>Find me in app/views/public/recipes/edit.html.erb</p>
+<div class="container-fluid">
+  <h2>レシピの編集</h2>
+
+  <%= form_with model: @recipe, url: recipe_path do |f| %>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>レシピ名</p>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>画像</p>
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>材料</p>
+      <%= f.text_area :material %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>作り方</p>
+      <%= f.text_area :making %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>メッセージ</p>
+      <%= f.text_area :message %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>タグ</p>
+      <%= f.text_field :tag_list, placeholder: "複数の場合は,で区切って入力してください" %>
+    </div>
+  </div>
+
+
+  <%= f.submit "変更を保存" %>
+
+  <% end %>
+
+</div>

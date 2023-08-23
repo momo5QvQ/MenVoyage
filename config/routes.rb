@@ -32,14 +32,16 @@ Rails.application.routes.draw do
 
     get "/homes/about" => "homes#about", as: "about"
 
-    resources :recipes, only: [:new, :create, :show, :index, :edit, :update]
+    resources :recipes, only: [:new, :create, :show, :index, :edit, :update] do
      #レシピの投稿・詳細・一覧・編集・更新
 
-    resources :bookmarks, only: [:create, :destroy]
-     #ブックマークの追加・削除
+      resources :bookmarks, only: [:create, :destroy]
+       #ブックマークの追加・削除
+       
+      resources :comments, only: [:create, :destroy]
+      #コメントの追加・削除
 
-    resources :comments, only: [:create, :destroy]
-     #コメントの追加・削除
+    end
 
     resources :tags, only: [:create, :edit, :update, :destroy]
      #タグの作成・編集・更新・削除
@@ -61,7 +63,7 @@ Rails.application.routes.draw do
 
     get "search_tag" => "recipes#search_tag"
     # タグの検索で使用する
-    
+
     get "search" => "searches#search"
 
     #resources :customers, only: [:show, :edit, :update, :check, :withdrawal]
