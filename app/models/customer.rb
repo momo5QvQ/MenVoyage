@@ -8,4 +8,18 @@ class Customer < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(email: 'guest@email.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.last_name = "ゲスト"
+      customer.first_name = "ユーザー"
+      customer.last_name_kana = "ゲスト"
+      customer.first_name_kana = "ユーザー"
+      customer.is_withdrawal = false
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+    end
+  end
+
 end
