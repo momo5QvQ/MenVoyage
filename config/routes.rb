@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     #get 'sessions/destroy'
   end
 
+  # ゲストログイン
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
+
   scope module: :public do
 
     root to: 'homes#top'
@@ -37,7 +42,7 @@ Rails.application.routes.draw do
 
       resources :bookmarks, only: [:create, :destroy]
        #ブックマークの追加・削除
-       
+
       resources :comments, only: [:create, :destroy]
       #コメントの追加・削除
 
