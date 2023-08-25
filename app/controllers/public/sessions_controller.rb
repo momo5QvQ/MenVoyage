@@ -17,7 +17,7 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  
+
   # ゲストログイン
   def guest_sign_in
     customer = Customer.guest

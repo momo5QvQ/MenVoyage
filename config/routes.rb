@@ -4,12 +4,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  # 顧客用
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
-
   namespace :admin do
     root to: "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
@@ -26,9 +20,15 @@ Rails.application.routes.draw do
     #get 'sessions/destroy'
   end
 
+  # 顧客用
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
   # ゲストログイン
   devise_scope :customer do
-    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
   scope module: :public do
