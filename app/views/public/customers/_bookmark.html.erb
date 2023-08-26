@@ -1,7 +1,9 @@
-<div class="text-center">
-  <a data-toggle="collapse" href="#collapse1">
-    <h3><strong class="border-bottom border-dark"><%= @customer.last_name %>様のお気に入り</strong></h3>
-  </a>
+<div class="row">
+  <div class="col-md-12">
+    <a data-toggle="collapse" href="#collapse1">
+      <h5><%= @customer.last_name %>様のお気に入り</h5>
+    </a>
+  </div>
 </div>
 
 <div class="m-5">
@@ -14,8 +16,6 @@
             <div class="py-1"><%= image_tag recipe.get_image, size: "200x150", style: "object-fit: cover;" %></div>
             <div class="py-5"><%= recipe.customer.last_name %></div>
             <div class="py-5"><%= recipe.name %></div>
-            <!--<div class="py-5"><%#= post.address %></div>-->
-            <!--<div class="py-5"><%#= post.detailed_description %></div>-->
             <div class="py-5"><%= link_to "詳細を確認", recipe_path(recipe.id), class: "btn btn-warning btn_lg" %></div>
           </div>
         <% end %>

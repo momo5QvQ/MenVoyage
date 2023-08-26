@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-10">
+    <div class="col-md-12">
       <div class="jumbotron">
         <div class="welcome-text">
           <div class="text-center">
@@ -15,13 +15,28 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
-            <h3 class="title">新着メニュー</h3>
+        <div class="col-md-12 mb-3">
+          <h3 class="title">新着メニュー</h3>
+            <div class="row">
+              <% @recipes.first(4).each do |recipe| %>
+              <div class="col-md-3 col-sm-6 mt-3">
+                <%= link_to recipe_path(recipe.id) do %>
+                  <%= image_tag recipe.get_image, size: "200x150", style: "object-fit: cover;" %>
+                <% end %>
+              <p><%= recipe.name %></p>
+            </div>
+            <% end %>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <%= link_to "全てのレシピを見る>", recipes_path %>
+      <div class="row justify-content-end">
+        <div class="col-md-3">
+          <%= link_to "全てのレシピを見る", recipes_path, class:"btn btn-light" %>
+        </div>
+        <div class="col-md-3">
+          <% if customer_signed_in? %>
+            <%= link_to "レシピを投稿する", new_recipe_path, class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>

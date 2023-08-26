@@ -1,23 +1,43 @@
-<h2>検索結果</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-5 mb-3">
+      <h3>検索結果</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-5">
+      <%= render 'public/searches/search' %>
+    </div>
+  </div>
 
-<table class="table table-hover table-inverse">
   <!--検索対象モデルがRecipeの時 -->
   <% if @range == "Recipe" %>
-    <tbody>
+    <div class="row">
       <% @recipes.each do |recipe| %>
-        <tr>
-          <td><%= recipe.name %></td>
-        </tr>
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="mb-2">
+            <%= recipe.name %>
+          </div>
+        </div>
       <% end %>
-    </tbody>
+    </div>
   <% else %>
     <!--検索対象モデルがRecipeではない時(= 検索対象モデルがTagの時) -->
-    <tbody>
+    <div class="row">
       <% @tags.each do |tag| %>
-        <tr>
-          <td><%= tag.name %></td>
-        </tr>
+        <div class="col-md-3 col-sm-6 mb-3">
+          <% tag.recipes.each do |recipe| %>
+            <div class="mb-2">
+              <%= link_to recipe_path(recipe.id) do %>
+                <%= image_tag recipe.get_image, size: "200x150", style: "object-fit: cover;" %>
+              <% end %>
+            </div>
+            <div class="mb-3">
+              <%= recipe.name %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-    </tbody>
+    </div>
   <% end %>
-</table>
+</div>

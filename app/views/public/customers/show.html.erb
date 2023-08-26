@@ -1,44 +1,51 @@
 <div class="container">
   <h2 class="my-5">マイページ</h2>
   <div class="row">
-    <div class="col-md-6 mb-5">
-        <div class="col-md-12 mb-3">
-          <h5>氏名</h5>
-          <%= @customer.last_name + @customer.first_name%>
-        </div>
-        <div class="col-md-12 mb-3">
-          <h5>カナ</h5>
-          <%= @customer.last_name_kana + @customer.first_name_kana %>
-        </div>
-    </div>
-    <!--<div class="col-md-6 mb-5">-->
-      <div class="d-flex align-items-end">
-        <p><%= link_to "編集する",customers_information_edit_path, class:"btn btn-success ml-5"%></p>
-      </div>
-    <!--</div>-->
-    <div class="col-md-12 mb-5">
-      <h5>投稿レシピ一覧</h5>
+    <div class="col-md-12">
+
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 mb-5">
           <div class="row">
-            <% @recipes.each do |recipe| %>
-              <div class="col-md-3 col-sm-6 mb-3">
-                <div class="mb-2">
-                  <%= link_to recipe_path(recipe.id) do %>
-                    <%= image_tag recipe.get_image, size: "200x150", style: "object-fit: cover;" %>
-                  <% end %>
-                </div>
-                <div class="mb-3">
-                  <%= recipe.name %>
-                </div>
+            <div class="col-md-4 mb-3">
+              <h5><strong>氏名</strong></h5>
+            </div>
+            <div class="col-md-8 mb-3">
+              <small><%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %></small></br>
+              <%= @customer.last_name %>&nbsp;<%= @customer.first_name %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-5">
+          <%= link_to "編集する",customers_information_edit_path, class:"btn btn-success ml-5"%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-5">
+          <h5>投稿レシピ一覧</h5>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <% @recipes.each do |recipe| %>
+                  <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="mb-2">
+                      <%= link_to recipe_path(recipe.id) do %>
+                        <%= image_tag recipe.get_image, size: "200x150", style: "object-fit: cover;" %>
+                      <% end %>
+                    </div>
+                    <div class="mb-3">
+                      <%= recipe.name %>
+                    </div>
+                  </div>
+                <% end %>
               </div>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
     <%= render "bookmark", bookmark: @bookmark %>
+    <div class="col-md-6 mb-5">
   </div>
 </div>
 

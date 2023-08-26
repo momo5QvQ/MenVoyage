@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container">
 
   <div class="row">
-    <div class="col-sm-12 mb-5">
+    <div class="col-sm-12 mt-5 mb-3">
       <h2><%= @recipe.name %></h2>
     </div>
   </div>
@@ -53,16 +53,17 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-6 mb-5">
-      <%= render "bookmark", recipe: @recipe %>
+  <% if customer_signed_in? %>
+    <div class="row">
+      <div class="col-sm-6 mb-5">
+        <%= render "bookmark", recipe: @recipe %>
+      </div>
+      <div class="col-sm-6 mb-5">
+        <% if @recipe.customer == current_customer %>
+          <td><%= link_to 'レシピの編集', edit_recipe_path(@recipe), class: "btn btn-sm btn-success" %></td>
+        <% end %>
+      </div>
     </div>
-    <div class="col-sm-6 mb-5">
-      <% if @recipe.customer == current_customer %>
-        <td><%= link_to 'レシピの編集', edit_recipe_path(@recipe), class: "btn btn-sm btn-success" %></td>
-      <% end %>
-    </div>
-  </div>
-  <%= render partial: "comment", locals: { recipe: @recipe, comment: @comment} %>
-
+    <%= render partial: "comment", locals: { recipe: @recipe, comment: @comment} %>
+  <% end %>
 </div>
