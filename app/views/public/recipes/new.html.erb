@@ -1,47 +1,60 @@
 <div class="container-fluid">
-  <h2>レシピ投稿</h2>
+  <div class="row">
+    <div class="col-md-12 mt-5 mb-5">
+      <h3>レシピ投稿</h3>
+    </div>
+  </div>
 
   <%= form_with model: @recipe, url: recipes_path do |f| %>
 
   <div class="row">
-    <div class="col-md-12 mb-3">
-      <p>レシピ名</p>
-      <%= f.text_field :name %>
-    </div>
-  </div>
+    <div class="col-md-6 mb-3">
 
-  <div class="row">
-    <div class="col-md-12 mb-3">
-      <p>画像</p>
-      <%= f.file_field :image, accept: "image/*" %>
-    </div>
-  </div>
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <p>レシピ名</p>
+          <%= f.text_field :name %>
+        </div>
+      </div>
 
-  <div class="row">
-    <div class="col-md-12 mb-3">
-      <p>材料</p>
-      <%= f.text_area :material %>
-    </div>
-  </div>
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <p>画像</p>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+      </div>
 
-  <div class="row">
-    <div class="col-md-12 mb-3">
-      <p>作り方</p>
-      <%= f.text_area :making %>
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <p>材料</p>
+          <%= f.text_area :material %>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-12 mb-3">
-      <p>メッセージ</p>
-      <%= f.text_area :message %>
-    </div>
-  </div>
+    <div class="col-md-6 mb-3">
 
-  <div class="row">
-    <div class="col-md-12 mb-3">
-      <p>タグ</p>
-      <%= f.text_field :tag_list, placeholder: "複数の場合は,で区切って入力してください" %>
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <p>作り方</p>
+          <%= f.text_area :making %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <p>メッセージ</p>
+          <%= f.text_area :message %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <p>タグ</p>
+          <%= f.text_field :tag_list, placeholder: "複数の場合は,で区切って入力してください" %>
+        </div>
+      </div>
+
     </div>
   </div>
 

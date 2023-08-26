@@ -12,12 +12,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :destroy]
     #顧客コメントの一覧・削除
 
-    #resources :sessions, only: [:new, :create, :destroy]
-     #管理者のログイン・ログアウト
-
-    #get 'sessions/new'
-    #get 'sessions/create'
-    #get 'sessions/destroy'
   end
 
   # 顧客用
@@ -73,9 +67,6 @@ Rails.application.routes.draw do
 
     #resources :customers, only: [:show, :edit, :update, :check, :withdrawal]
      #顧客情報の詳細・編集・退会の確認画面・退会
-
-    #resources :sessions, only: [:new, :create, :destroy]
-     #顧客のログイン・新規登録・ログアウト
 
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
