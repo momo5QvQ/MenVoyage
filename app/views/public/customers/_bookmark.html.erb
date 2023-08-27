@@ -14,7 +14,7 @@
         <% @bookmarks.each do |recipe| %>
           <div class="d-flex justify-content-between border-bottom border-dark">
             <div class="py-1"><%= image_tag recipe.get_image, size: "200x150", style: "object-fit: cover;" %></div>
-            <div class="py-5"><%= recipe.customer.last_name %></div>
+            <div class="py-5"><%= recipe.customer.last_name + recipe.customer.first_name %></div>
             <div class="py-5"><%= recipe.name %></div>
             <div class="py-5"><%= link_to "詳細を確認", recipe_path(recipe.id), class: "btn btn-warning btn_lg" %></div>
           </div>

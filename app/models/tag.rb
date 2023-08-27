@@ -17,4 +17,6 @@ class Tag < ApplicationRecord
     end
   end
 
+  validates :name, presence: true
+
 end

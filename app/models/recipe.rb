@@ -95,4 +95,9 @@ class Recipe < ApplicationRecord
       bookmarks.find_by(customer_id: customer.id)
   end
 
+  validates :name, presence: true
+  validates :material, presence: true
+  validates :making, presence: true
+  validates :message, presence: true
+
 end

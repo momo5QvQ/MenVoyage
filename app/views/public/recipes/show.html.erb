@@ -8,10 +8,10 @@
 
   <div class="row">
 
-    <div class="col-sm-4 mb-5">
+    <div class="col-md-4 mb-5">
       <%= image_tag @recipe.get_image, size: "300x200", style: "object-fit: cover;" %>
     </div>
-    <div class="col-sm-8 mb-5">
+    <div class="col-md-8 mb-5">
       <div class="row">
         <div class="col-sm-12 mb-2">
           <strong>材料</strong>
@@ -46,7 +46,6 @@
         <div class="col-sm-12 mb-5">
           <!-- タグ -->
           <% @recipe_tags.each do |tag| %>
-            <%#= link_to tag.name,search_tag_path(tag_id: tag.id) %>
             <span class="tag"><%= tag.name %></span>
           <% end %>
         </div>

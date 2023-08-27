@@ -5,6 +5,15 @@
     </div>
   </div>
 
+  <% if @recipe.errors.any? %><!--バリテーションエラーメッセージ-->
+  <%= @recipe.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
   <%= form_with model: @recipe, url: recipes_path do |f| %>
 
   <div class="row">
