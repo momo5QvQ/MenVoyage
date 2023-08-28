@@ -3,8 +3,9 @@ class Public::CommentsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @comment = current_customer.comments.new(comment_params)
     @comment.recipe_id = @recipe.id
-    @comment.save
-
+    if @comment.save
+      @comment = Comment.new
+    end
   end
 
   def destroy
@@ -13,6 +14,7 @@ class Public::CommentsController < ApplicationController
     comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id])
     comment.destroy if comment
     @recipe = Recipe.find(params[:recipe_id])
+    @comment = Comment.new
   end
 
   private

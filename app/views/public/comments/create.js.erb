@@ -1,3 +1,1 @@
-$("#comments-area").html("<%= j(render 'public/recipes/comment', recipe: @recipe, comment: @comment) %>")
-
-$("#comments-count").html("<%= j(render 'public/recipes/comment', recipe: @recipe ) %>")
+$("#comments-area").html("<%= j(render '/public/recipes/comment', recipe: @recipe, comment: @comment) %>")

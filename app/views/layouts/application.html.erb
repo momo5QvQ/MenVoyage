@@ -6,12 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+    <div id="wrapper">
+      <%= render 'layouts/header' %>
+      <%= yield %>
+      <footer class="fixed-bottom mx-0 bg-black bg-opacity-75 text-center text-dark">
+        <%= render 'layouts/footer' %>
+      </footer>
+    </div>
   </body>
 </html>
