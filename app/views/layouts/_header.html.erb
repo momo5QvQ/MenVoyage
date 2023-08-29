@@ -4,7 +4,9 @@
       <% if admin_signed_in? %>
         <%= link_to "麺Voyage", admin_root_path, class:"header-title navbar-brand" %>
       <% else %>
-        <%= link_to "麺Voyage", root_path, class:"header-title navbar-brand" %>
+        <%= link_to root_path, class: "header-title navbar-brand" do %>
+          <%= image_tag "MenVoyage_Logo.png", alt: "麺Voyageのロゴ", size: "180x100" %>
+        <% end %>
       <% end %>
       <button class="navbar-toggler mx-5" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

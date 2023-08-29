@@ -26,7 +26,7 @@
     top: 0;
     width: 100%;
     z-index: 99;
-    background-color: #FFA500;
+    background-color: #c86f5e;
    }
 
   footer {
@@ -34,4 +34,11 @@
     min-height: 50px;
     background: #BC8F8F;
     color: white;
+  }
+
+  .welcome-text {
+    width: 1000px;
+    height: 250px;
+    text-align:  center;
+    background-color: #fbe087;
   }
