@@ -17,6 +17,7 @@
    #wrapper {
     display: flex;
     flex-direction: column;
+    padding-bottom:50px;
     min-height: 100vh;
     background-color: #FFEBCD;
    }
@@ -30,10 +31,11 @@
    }
 
   footer {
-    position: sticky;
     min-height: 50px;
     background: #BC8F8F;
     color: white;
+    position: absolute;/*←親要素に対して、絶対位置を決める*/
+    bottom: 0; /*ページの下端からの距離が0の位置*/
   }
 
   .welcome-text {
