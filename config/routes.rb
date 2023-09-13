@@ -57,8 +57,8 @@ Rails.application.routes.draw do
     get 'customers/check' => 'customers#check', as: 'customers_check'
     # 顧客の退会確認画面
 
-    get 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
-    # 顧客の退会処理(ステータスの更新) patchではない？
+    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
+    # 顧客の退会処理(ステータスの更新)
 
     get "search_tag" => "recipes#search_tag"
     # タグの検索で使用する
