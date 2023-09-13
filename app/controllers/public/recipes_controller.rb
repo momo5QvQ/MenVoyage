@@ -60,6 +60,15 @@ class Public::RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    if @recipe.destroy
+      redirect_to recipe_path(@recipe)
+    else
+      render :destroy
+    end
+  end
+
   private
 
   def recipe_params

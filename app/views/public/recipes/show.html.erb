@@ -59,7 +59,8 @@
       </div>
       <div class="col-sm-6 mb-5">
         <% if @recipe.customer == current_customer %>
-          <td><%= link_to 'レシピの編集', edit_recipe_path(@recipe), class: "btn btn-sm btn-success" %></td>
+          <%= link_to 'レシピの編集', edit_recipe_path(@recipe), class: "btn btn-sm btn-success" %>
+          <%= link_to 'レシピを削除', recipe_path(@recipe), method: :delete, data: {confirm: "削除しますか？"} %>
         <% end %>
       </div>
     </div>
