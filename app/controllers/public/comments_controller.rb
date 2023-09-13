@@ -12,7 +12,9 @@ class Public::CommentsController < ApplicationController
     # Comment.find(id: params[:id], recipe_id: params[:recipe_id]).destroy
     # @recipe = Recipe.find(params[:recipe_id])
     comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id])
-    comment.destroy if comment
+    if comment && comment.customer == current_customer #コメントとコメントユーザー＝ログインユーザー
+      comment.destroy
+    end
     @recipe = Recipe.find(params[:recipe_id])
     @comment = Comment.new
   end
