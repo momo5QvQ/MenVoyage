@@ -31,12 +31,12 @@
       </div>
       <div class="row justify-content-end">
         <div class="col-md-3">
-          <%= link_to "全てのレシピを見る", recipes_path, class:"btn btn-light" %>
-        </div>
-        <div class="col-md-3">
           <% if customer_signed_in? %>
             <%= link_to "レシピを投稿する", new_recipe_path, class: "btn btn-primary" %>
           <% end %>
+        </div>
+        <div class="col-md-3">
+          <%= link_to "全てのレシピを見る＞＞", recipes_path %>
         </div>
       </div>
     </div>

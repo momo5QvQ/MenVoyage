@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 mb-5">
+    <div class="col-md-12 mt-3 mb-5">
       <h3>退会確認</h3>
     </div>
   </div>
@@ -12,8 +12,8 @@
           再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
         </p>
         <p>本当に退会してもよろしいですか？</p>
-        <%= link_to "退会する", customers_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
-        <%= link_to "退会しない", customers_mypage_path(current_customer) %>
+        <%= link_to "退会する", customers_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class:"btn btn-danger" %>
+        <%= link_to "退会しない", customers_mypage_path(current_customer), class:"btn btn-primary" %>
       </div>
     </div>
   </div>
