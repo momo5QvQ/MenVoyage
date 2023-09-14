@@ -54,10 +54,10 @@ Rails.application.routes.draw do
     patch 'customers/information/update' => 'customers#update'
     # 顧客の登録情報更新
 
-    get 'customers/check' => 'customers#check', as: 'customers_check'
+    get 'customers/:id/check' => 'customers#check', as: 'customers_check'
     # 顧客の退会確認画面
 
-    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
+    patch 'customers/:id/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
     # 顧客の退会処理(ステータスの更新)
 
     get "search_tag" => "recipes#search_tag"
