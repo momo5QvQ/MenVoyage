@@ -16,7 +16,8 @@
           </div>
         </div>
         <div class="col-md-6 mb-5">
-          <%= link_to "編集する",customers_information_edit_path, class:"btn btn-success ml-5"%>
+          <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success ml-5" %>
+          <%= link_to "退会する", customers_check_path(current_customer), class:"btn btn-danger" %>
         </div>
       </div>
 
@@ -44,8 +45,8 @@
         </div>
       </div>
 
-    <%= render "bookmark", bookmark: @bookmark %>
-    <div class="col-md-6 mb-5">
+      <%= render "bookmark", bookmark: @bookmark %>
+      <div class="col-md-6 mb-5"></div>
+    </div>
   </div>
 </div>
-

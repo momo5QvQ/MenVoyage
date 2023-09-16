@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
     get "/homes/about" => "homes#about", as: "about"
 
-    resources :recipes, only: [:new, :create, :show, :index, :edit, :update] do
+    resources :recipes, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
      #レシピの投稿・詳細・一覧・編集・更新
 
       resources :bookmarks, only: [:create, :destroy]
@@ -54,11 +54,11 @@ Rails.application.routes.draw do
     patch 'customers/information/update' => 'customers#update'
     # 顧客の登録情報更新
 
-    get 'customers/check' => 'customers#check', as: 'customers_check'
+    get 'customers/:id/check' => 'customers#check', as: 'customers_check'
     # 顧客の退会確認画面
 
-    get 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
-    # 顧客の退会処理(ステータスの更新) patchではない？
+    patch 'customers/:id/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
+    # 顧客の退会処理(ステータスの更新)
 
     get "search_tag" => "recipes#search_tag"
     # タグの検索で使用する

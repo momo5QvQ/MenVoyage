@@ -33,7 +33,23 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
-  # protected
+  protected
+
+  def reject_customer # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+    @customer = Customer.find_by(email: params[:customer][:email])
+    #ログイン時に入力されたメールアドレスに対応するユーザーが存在するか探しています。
+
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_withdrawal == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_customer_registration_path
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+    else
+      flash[:notice] = "ユーザが見つかりません。"
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
