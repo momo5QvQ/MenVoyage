@@ -53,6 +53,7 @@ class Public::RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       #@recipeをつけることrecipeモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
       @recipe.update_tags(tags)
+      flash[:notice] = "レシピ内容を更新しました。"
       redirect_to recipe_path(@recipe)
     else
       render :edit
@@ -62,6 +63,7 @@ class Public::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     if @recipe.destroy
+      flash[:notice] = "レシピを削除しました。"
       redirect_to recipes_path
     else
       render :destroy
