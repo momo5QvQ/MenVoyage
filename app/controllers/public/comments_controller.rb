@@ -5,6 +5,8 @@ class Public::CommentsController < ApplicationController
     @comment.recipe_id = @recipe.id
     if @comment.save
       @comment = Comment.new
+    else
+      render 'error'
     end
   end
 
