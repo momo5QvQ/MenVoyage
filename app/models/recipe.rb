@@ -19,7 +19,7 @@ class Recipe < ApplicationRecord
   def save_tags(tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    # 現在取得したタグから送られてきたタグを除いてoldtagとする
+    # 現在取得したタグから送られてきたタグを除いてold_tagとする
     old_tags = current_tags - tags
     # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
     new_tags = tags - current_tags
@@ -37,42 +37,42 @@ class Recipe < ApplicationRecord
   end
 
    # タグ付けの更新用メソッド
-  def update_tags(latest_tags)
-    if self.tags.empty?
-      # 既存のタグがなかったら追加だけ行う
-      latest_tags.each do |latest_tag|
-        self.tags.find_or_create_by(name: latest_tag)
-      end
-    elsif latest_tags.empty?
-      # 更新対象のタグがなかったら既存のタグをすべて削除
-      # 既に保存がされていたら既に登録されているタグの内容を削除
-      self.tags.each do |tag|
-        self.tags.delete(tag)
-      end
-    else
-      # 既存のタグも更新対象のタグもある場合は差分更新
-      current_tags = self.tags.pluck(:name)
-      #左を起点に引き算をする
-      #　　　　　　 b             a b c
-      old_tags = current_tags - latest_tags
-      #一致したものを取り出す
-      # a c       a b c            b
-      new_tags = latest_tags - current_tags
+  # def update_tags(latest_tags)
+  #   if self.tags.empty?
+  #     # 既存のタグがなかったら追加だけ行う
+  #     latest_tags.each do |latest_tag|
+  #       self.tags.find_or_create_by(name: latest_tag)
+  #     end
+  #   elsif latest_tags.empty?
+  #     # 更新対象のタグがなかったら既存のタグをすべて削除
+  #     # 既に保存がされていたら既に登録されているタグの内容を削除
+  #     self.tags.each do |tag|
+  #       self.tags.delete(tag)
+  #     end
+  #   else
+  #     # 既存のタグも更新対象のタグもある場合は差分更新
+  #     current_tags = self.tags.pluck(:name)
+  #     #左を起点に引き算をする
+  #     #　　　　　　 b             a b c
+  #     old_tags = current_tags - latest_tags
+  #     #一致したものを取り出す
+  #     # a c       a b c            b
+  #     new_tags = latest_tags - current_tags
 
-      # a  c
-      old_tags.each do |old_tag|
-        tag = self.tags.find_by(name: old_tag)
-        self.tags.delete(tag) if tag.present?
-      end
+  #     # a  c
+  #     old_tags.each do |old_tag|
+  #       tag = self.tags.find_by(name: old_tag)
+  #       self.tags.delete(tag) if tag.present?
+  #     end
 
 
-      new_tags.each do |new_tag|
-        # b
-        self.tags.find_or_create_by(name: new_tag)
-        # self.tags << new_tags
-      end
-    end
-  end
+  #     new_tags.each do |new_tag|
+  #       # b
+  #       self.tags.find_or_create_by(name: new_tag)
+  #       # self.tags << new_tags
+  #     end
+  #   end
+  # end
 
   # 検索方法分岐
   def self.looks(search, word)

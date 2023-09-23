@@ -10,6 +10,7 @@
 
     <div class="col-md-4 mb-5">
       <%= image_tag @recipe.get_image, size: "300x200", style: "object-fit: cover;" %>
+      <p><strong>作成者：</strong><%= @recipe.customer.last_name + ' ' + @recipe.customer.first_name %></p>
     </div>
     <div class="col-md-8 mb-5">
       <div class="row">
