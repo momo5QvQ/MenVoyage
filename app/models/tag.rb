@@ -2,6 +2,9 @@ class Tag < ApplicationRecord
   has_many :recipe_tags, dependent: :destroy
   has_many :recipes, through: :recipe_tags
 
+  validates :name, presence: true
+  before_save :strip_whitespace
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
@@ -17,6 +20,10 @@ class Tag < ApplicationRecord
     end
   end
 
-  validates :name, presence: true
+  private
+
+  def strip_whitespace
+    self.name.strip!  # tag_nameフィールドの前後の空白を削除
+  end
 
 end

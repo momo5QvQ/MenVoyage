@@ -74,7 +74,7 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :image, :material, :making, :message)
+    params.require(:recipe).permit(:name, :image, :material, :making, :message, :tag_list)
   end
 
 end
