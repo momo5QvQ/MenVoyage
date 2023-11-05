@@ -10,10 +10,10 @@
   <div class="row"><!--タグ一覧-->
     <div class="col-md-12 mb-3">
       <% @tags.each do |tag| %>
-        <i class="fa-sharp fa-solid fa-tag"></i>
-        <%= tag.name %>
-        <%#= link_to tag.name, search_tag_path(tag_id: tag.id) %>
-        (<%= tag.recipe_tags.count %>)
+        <% if tag.recipe_tags.count > 0 %>
+          <%= tag.name %>
+          (<%= tag.recipe_tags.count %>)
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -6,11 +6,11 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.customer_id = current_customer.id
-    #:recipeはrecipeで投稿されてきた際にパラメーターとして飛ばされ、その中の[:tag_id]を取得して、splitで,区切りにしている
-    tags = params[:recipe][:tag_list].split(',')
+    #[:recipe]はrecipeで投稿されてきた際にパラメーターとして飛ばされ、その中の[:tag_id]を取得して、stripで空白を無くしsplitで,区切りにしている
+    tags = params[:recipe][:tag_list].strip.split(',')
 
     if @recipe.save
-      #@recipeをつけることpostモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
+      #@recipeをつけることrecipeモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
       @recipe.save_tags(tags)
       redirect_to recipe_path(@recipe), notice:'投稿が完了しました' #確認ダイアログ表示
     else
@@ -48,11 +48,11 @@ class Public::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    #:postはrecipeで投稿されてきた際にパラメーターとして飛ばされ、その中の[:tag_id]を取得して、splitで,区切りにしている
-    tags = params[:recipe][:tag_list].split(',')
+    #:postはrecipeで投稿されてきた際にパラメーターとして飛ばされ、その中の[:tag_id]を取得して、stripで空白を無くしsplitで,区切りにしている
+    tags = params[:recipe][:tag_list].strip.split(',')
     if @recipe.update(recipe_params)
       #@recipeをつけることrecipeモデルの情報を.save_tagsに引き渡してメソッドを走らせることができる
-      @recipe.update_tags(tags)
+      @recipe.save_tags(tags)
       flash[:notice] = "レシピ内容を更新しました。"
       redirect_to recipe_path(@recipe)
     else
@@ -64,6 +64,7 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     if @recipe.destroy
       flash[:notice] = "レシピを削除しました。"
+
       redirect_to recipes_path
     else
       render :destroy
@@ -73,7 +74,7 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :image, :material, :making, :message)
+    params.require(:recipe).permit(:name, :image, :material, :making, :message, :tag_list)
   end
 
 end

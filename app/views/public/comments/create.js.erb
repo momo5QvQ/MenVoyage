@@ -1,1 +1,4 @@
 $("#comments-area").html("<%= j(render '/public/recipes/comment', recipe: @recipe, comment: @comment) %>")
+if ($("#comments-error").length) {
+  $("#comments-error").remove();
+}
